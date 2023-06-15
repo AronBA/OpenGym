@@ -24,6 +24,8 @@ public class Workout extends JPanel {
         content = new JPanel();
         content.setLayout(new BoxLayout(content,BoxLayout.Y_AXIS));
 
+        exercises = new ArrayList<>();
+
 
         JScrollPane scrollPane= new JScrollPane(content);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);

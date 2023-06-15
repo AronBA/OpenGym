@@ -5,10 +5,12 @@ import java.awt.*;
 import java.lang.reflect.Array;
 import java.security.spec.ECField;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Exercise extends JPanel{
 
     String exerciseName;
+    JList<String> jSets;
     DefaultListModel<String> sets;
     Exercise(Workout workout){
 
@@ -37,8 +39,8 @@ public class Exercise extends JPanel{
         //setMaximumSize(new Dimension(Integer.MAX_VALUE,50));
 
         sets = new DefaultListModel<>();
-        JList<String> Jsets = new JList<String>(sets);
-        add(Jsets);
+        jSets = new JList<>(sets);
+        add(jSets);
 
 
 
@@ -50,7 +52,15 @@ public class Exercise extends JPanel{
 
     void removeSet(){
         if (!sets.isEmpty()){
-            sets.remove(0);
+            int[] indecies = jSets.getSelectedIndices();
+            if(indecies.length == 0) {
+                sets.remove(0);
+            }
+            else {
+                for (int i = indecies.length-1; i >= 0; i--) {
+                    sets.remove(indecies[i]);
+                }
+            }
             Window.refreshWindow();
         }
 
