@@ -6,12 +6,13 @@ import java.lang.reflect.Array;
 import java.security.spec.ECField;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Exercise extends JPanel{
 
-    String exerciseName;
-    JList<String> jSets;
-    DefaultListModel<String> sets;
+    private String exerciseName;
+    private JList<String> jSets;
+    private DefaultListModel<String> sets;
     Exercise(Workout workout){
 
         exerciseName = JOptionPane.showInputDialog("ExerciseName");
@@ -48,7 +49,17 @@ public class Exercise extends JPanel{
         Window.refreshWindow();
     }
 
+    public List<String> getSetsAsList() {
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < sets.size(); i++){
+           list.add(sets.elementAt(i));
+        }
+        return list;
+    }
 
+    public String getExerciseName() {
+        return exerciseName;
+    }
 
     void removeSet(){
         if (!sets.isEmpty()){
