@@ -4,9 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+import static dev.aronba.opengym.Json.saveWorkoutToJson;
+
 public class Workout extends JPanel {
 
     WorkoutPage workoutPage;
+
+
+    ArrayList<Exercise> exercises;
 
 
     JPanel content;
@@ -38,14 +43,19 @@ public class Workout extends JPanel {
     }
     public void finish(){
         workoutPage.removeWorkout(this);
+
+        saveWorkoutToJson(this);
+
     }
     public void addExercise(){
-        new Exercise(this);
+        Exercise t = new Exercise(this);
+        exercises.add(t);
 
     }
     public void removeExercise(Exercise exercise){
         System.out.println("test");
         this.content.remove(exercise);
+        exercises.remove(exercise);
         Window.refreshWindow();
     }
 }
