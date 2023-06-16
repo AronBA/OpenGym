@@ -3,19 +3,23 @@ package dev.aronba.opengym.Workout;
 import dev.aronba.opengym.Window;
 
 import javax.swing.*;
+import javax.swing.text.Style;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Exercise extends JPanel{
 
+
     private String exerciseName;
     private JList<String> jSets;
     private DefaultListModel<String> sets;
     Exercise(Workout workout){
 
+
+
         exerciseName = JOptionPane.showInputDialog("ExerciseName");
-        JButton removeExercise = new JButton("remove");
+        JButton removeExercise = new JButton("X");
         removeExercise.addActionListener(actionEvent -> workout.removeExercise(this));
         JPanel toppanel = new JPanel();
 
@@ -23,25 +27,31 @@ public class Exercise extends JPanel{
         setLayout(new BorderLayout());
 
         JLabel exerciseNameLabel = new JLabel(exerciseName);
-
+        exerciseNameLabel.setFont(new Font("Arial", Font.BOLD,20));
         toppanel.add(exerciseNameLabel);
         toppanel.add(removeExercise); 
         add(toppanel, BorderLayout.NORTH);
 
-        JButton newSet = new JButton("new set");
+        JButton newSet = new JButton("+");
         newSet.addActionListener(actionEvent ->addSet());
-        add(newSet,BorderLayout.EAST);
 
-        JButton removeset = new JButton("remove set");
+        JButton removeset = new JButton("-");
         removeset.addActionListener(actionEvent ->removeSet());
-        add(removeset,BorderLayout.SOUTH);
 
-        //setMaximumSize(new Dimension(Integer.MAX_VALUE,50));
 
+        JPanel sidepanel = new JPanel();
+        sidepanel.setLayout(new GridLayout(2,1));
+        add(sidepanel,BorderLayout.EAST);
+        setMaximumSize(new Dimension(Integer.MAX_VALUE,200));
+
+        sidepanel.add(newSet);
+        sidepanel.add(removeset);
         sets = new DefaultListModel<>();
         jSets = new JList<>(sets);
-        add(jSets);
+        add(jSets,BorderLayout.CENTER);
 
+
+        add(new JSeparator(), BorderLayout.SOUTH);
 
 
         workout.content.add(this);
