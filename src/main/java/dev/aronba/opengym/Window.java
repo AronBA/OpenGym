@@ -1,5 +1,8 @@
 package dev.aronba.opengym;
 
+import dev.aronba.opengym.History.HistoryPage;
+import dev.aronba.opengym.Workout.WorkoutPage;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -24,12 +27,14 @@ public class Window extends JFrame {
         setBounds(100,100,600,400);
 
         WorkoutPage workoutPage = new WorkoutPage();
-        WorkoutPage workoutPage1 = new WorkoutPage();
-        WorkoutPage workoutPage2 = new WorkoutPage();
+        HistoryPage historyPage = new HistoryPage();
+
 
         JTabbedPane Navbar = new JTabbedPane();
-        Navbar.addTab("Workout",workoutPage1);
-        Navbar.addTab("Profile",workoutPage);
+
+
+        Navbar.addTab("Workout",workoutPage);
+        Navbar.addTab("History",historyPage);
 
         add(Navbar);
 

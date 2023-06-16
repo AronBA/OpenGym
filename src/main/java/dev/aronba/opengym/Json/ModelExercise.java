@@ -1,4 +1,4 @@
-package dev.aronba.opengym;
+package dev.aronba.opengym.Json;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

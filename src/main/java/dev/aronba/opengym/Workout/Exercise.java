@@ -1,11 +1,10 @@
-package dev.aronba.opengym;
+package dev.aronba.opengym.Workout;
+
+import dev.aronba.opengym.Window;
 
 import javax.swing.*;
 import java.awt.*;
-import java.lang.reflect.Array;
-import java.security.spec.ECField;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Exercise extends JPanel{
@@ -46,7 +45,7 @@ public class Exercise extends JPanel{
 
 
         workout.content.add(this);
-        Window.refreshWindow();
+        dev.aronba.opengym.Window.refreshWindow();
     }
 
     public List<String> getSetsAsList() {
@@ -72,7 +71,7 @@ public class Exercise extends JPanel{
                     sets.remove(indecies[i]);
                 }
             }
-            Window.refreshWindow();
+            dev.aronba.opengym.Window.refreshWindow();
         }
 
     }

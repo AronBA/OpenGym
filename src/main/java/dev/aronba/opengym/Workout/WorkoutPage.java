@@ -1,17 +1,16 @@
-package dev.aronba.opengym;
+package dev.aronba.opengym.Workout;
+
+import dev.aronba.opengym.Window;
+import dev.aronba.opengym.Workout.Workout;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Objects;
 
 public class WorkoutPage extends JPanel {
     Workout currentworkout;
     JButton createWorkout;
 
-    WorkoutPage(){
+    public WorkoutPage(){
         setLayout(new BorderLayout());
         createWorkout = new JButton("new workout");
         add(createWorkout);
@@ -24,7 +23,7 @@ public class WorkoutPage extends JPanel {
         remove(createWorkout);
         this.currentworkout = new Workout(this);
         add(currentworkout,BorderLayout.CENTER);
-        Window.refreshWindow();
+        dev.aronba.opengym.Window.refreshWindow();
     }
     void removeWorkout(Workout workout){
         remove(workout);
