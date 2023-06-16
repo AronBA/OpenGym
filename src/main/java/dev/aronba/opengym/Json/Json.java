@@ -55,7 +55,7 @@ public class Json {
 
         try {
             getObjectMapper().writeValue(new File("Workouts/" + timestamp + ".json"),exerciseList);
-
+            HistoryPage.loadFiles();
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

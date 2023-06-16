@@ -1,5 +1,6 @@
 package dev.aronba.opengym.Workout;
 
+import dev.aronba.opengym.History.HistoryPage;
 import dev.aronba.opengym.Window;
 
 import javax.swing.*;
@@ -49,7 +50,6 @@ public class Workout extends JPanel {
         workoutPage.removeWorkout(this);
 
         saveWorkoutToJson(this);
-
     }
     public void addExercise(){
         Exercise t = new Exercise(this);
