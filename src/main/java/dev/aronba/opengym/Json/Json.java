@@ -40,7 +40,7 @@ public class Json {
     public static void saveWorkoutToJson(Workout workout){
 
         LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy_HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd_MM_yyyy_HH_mm");
         String timestamp = now.format(formatter);
 
         List<ModelExercise> exerciseList = new ArrayList<>();
@@ -54,7 +54,7 @@ public class Json {
         }
 
         try {
-            getObjectMapper().writeValue(new File("Workouts/"+timestamp + ".json"),exerciseList);
+            getObjectMapper().writeValue(new File("Workouts/" + timestamp + ".json"),exerciseList);
 
         } catch (IOException ex) {
             throw new RuntimeException(ex);
