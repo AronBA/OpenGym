@@ -1,5 +1,6 @@
 package dev.aronba.opengym;
 
+import dev.aronba.opengym.Calculator.CalculatorPage;
 import dev.aronba.opengym.History.HistoryPage;
 import dev.aronba.opengym.Workout.WorkoutPage;
 
@@ -28,6 +29,7 @@ public class Window extends JFrame {
 
         WorkoutPage workoutPage = new WorkoutPage();
         HistoryPage historyPage = new HistoryPage();
+        CalculatorPage calculatorPage = new CalculatorPage();
 
 
         JTabbedPane Navbar = new JTabbedPane();
@@ -35,6 +37,7 @@ public class Window extends JFrame {
 
         Navbar.addTab("Workout",workoutPage);
         Navbar.addTab("History",historyPage);
+        Navbar.addTab("Calculator",calculatorPage);
 
         add(Navbar);
 
