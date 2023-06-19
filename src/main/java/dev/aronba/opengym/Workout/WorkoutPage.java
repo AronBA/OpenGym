@@ -6,6 +6,9 @@ import dev.aronba.opengym.Workout.Workout;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * This class represents a Page responsible for creating new workouts
+ */
 public class WorkoutPage extends JPanel {
     Workout currentworkout;
     JButton createWorkout;
@@ -15,9 +18,6 @@ public class WorkoutPage extends JPanel {
         createWorkout = new JButton("new workout");
         add(createWorkout);
         createWorkout.addActionListener(actionEvent -> newWorkout());
-
-
-
     }
     void newWorkout(){
         remove(createWorkout);
@@ -32,9 +32,4 @@ public class WorkoutPage extends JPanel {
         createWorkout.addActionListener(actionEvent -> newWorkout());
         Window.refreshWindow();
     }
-
-
-
-
-
 }

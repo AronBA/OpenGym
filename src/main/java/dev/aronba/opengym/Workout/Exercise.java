@@ -8,15 +8,17 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class represents an Exercise
+ */
+
 public class Exercise extends JPanel{
 
 
-    private String exerciseName;
-    private JList<String> jSets;
-    private DefaultListModel<String> sets;
+    private final String exerciseName;
+    private final JList<String> jSets;
+    private final DefaultListModel<String> sets;
     Exercise(Workout workout){
-
-
 
         exerciseName = JOptionPane.showInputDialog("ExerciseName");
         JButton removeExercise = new JButton("X");
@@ -52,8 +54,6 @@ public class Exercise extends JPanel{
 
 
         add(new JSeparator(), BorderLayout.SOUTH);
-
-
         workout.content.add(this);
         dev.aronba.opengym.Window.refreshWindow();
     }
@@ -69,7 +69,6 @@ public class Exercise extends JPanel{
     public String getExerciseName() {
         return exerciseName;
     }
-
     void removeSet(){
         if (!sets.isEmpty()){
             int[] indecies = jSets.getSelectedIndices();

@@ -36,9 +36,6 @@ public class ProfilePage extends JPanel {
         });
         add(themesComboBox);
 
-
-
-
         JButton deleteDataButton = new JButton("Delete all Data");
         deleteDataButton.addActionListener(l -> deleteData(Settings.workoutFolder));
 

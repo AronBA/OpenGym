@@ -25,15 +25,12 @@ public class Json {
     }
     public static JsonNode parse(String src) throws IOException {
         return objectMapper.readTree(src);
-
-
     }
 
     public static List<ModelExercise> readWorkoutFromJson(File file){
 
         try {
-            List<ModelExercise> list = objectMapper.readValue(file, new TypeReference<List<ModelExercise>>() {});
-            return list;
+            return objectMapper.readValue(file, new TypeReference<List<ModelExercise>>() {});
         } catch (IOException ignored) {
             return new ArrayList<>();
         }

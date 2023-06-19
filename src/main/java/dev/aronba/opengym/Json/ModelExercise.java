@@ -11,17 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModelExercise  {
-    static int workoutcount;
-
-
-
     @JsonProperty
     private String name;
     @JsonProperty
     private List<String> sets;
-
-
-
     public void setName(String name) {
         this.name = name;
     }
@@ -33,7 +26,6 @@ public class ModelExercise  {
     public String getName() {
         return name;
     }
-
     public List<String> getSets() {
         return sets;
     }
