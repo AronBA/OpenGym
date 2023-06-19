@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.aronba.opengym.History.HistoryPage;
+import dev.aronba.opengym.Settings;
 import dev.aronba.opengym.Window;
 import dev.aronba.opengym.Workout.Exercise;
 import dev.aronba.opengym.Workout.Workout;
@@ -54,7 +55,7 @@ public class Json {
         }
 
         try {
-            getObjectMapper().writeValue(new File("Workouts/" + timestamp + ".json"),exerciseList);
+            getObjectMapper().writeValue(new File(Settings.workoutFolder + "/" + timestamp + ".json"),exerciseList);
             HistoryPage.loadFiles();
         } catch (IOException ex) {
             throw new RuntimeException(ex);

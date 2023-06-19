@@ -2,6 +2,7 @@ package dev.aronba.opengym.History;
 
 import dev.aronba.opengym.Json.Json;
 import dev.aronba.opengym.Json.ModelExercise;
+import dev.aronba.opengym.Settings;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -29,7 +30,7 @@ public class HistoryPage extends JLabel {
         add(area,BorderLayout.CENTER);
     }
     private static DefaultTreeModel generateTreeModel() {
-        String path = "Workouts";
+        String path =Settings.workoutFolder.toString();
         DefaultMutableTreeNode root = new DefaultMutableTreeNode(path);
 
         loadFiles(new File(path),root);
@@ -38,7 +39,7 @@ public class HistoryPage extends JLabel {
     }
     private void inspectFiles(DefaultMutableTreeNode node) {
         String filename = node.getUserObject().toString();
-        String path = "Workouts/" + filename;
+        String path = Settings.workoutFolder + "/" + filename;
 
         List<ModelExercise> list = Json.readWorkoutFromJson(new File(path));
         area.setText("");
