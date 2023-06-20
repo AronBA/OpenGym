@@ -6,9 +6,9 @@
 
 <h2>Project Screenshots:</h2>
 
-<img src="https://cdn.discordapp.com/attachments/771008355841343498/1120842366610309160/image.png" alt="project-screenshot" width="285" height="400/">
+<img src="https://cdn.discordapp.com/attachments/771008355841343498/1120842366610309160/image.png" alt="project-screenshot" width="400" height="400/">
 
-<img src="https://cdn.discordapp.com/attachments/771008355841343498/1120842480917680148/image.png" alt="project-screenshot" width="285" height="400/">
+<img src="https://cdn.discordapp.com/attachments/771008355841343498/1120842480917680148/image.png" alt="project-screenshot" width="400" height="400/">
 
   
   
