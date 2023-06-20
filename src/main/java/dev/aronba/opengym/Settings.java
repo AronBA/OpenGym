@@ -29,18 +29,16 @@ public class Settings {
         }
         setTheme(Theme.valueOf(properties.getProperty("theme")));
     }
-
-    public static Theme getTheme() {
-        return Settings.theme;
-    }
     public static void setTheme(Theme theme) {
         Settings.theme = theme;
         try {
             UIManager.setLookAndFeel(Theme.getTheme(theme));
-            SwingUtilities.updateComponentTreeUI(Window.getInstance());
         } catch( Exception ex ) {
-            System.err.println( "Failed to set LaF" );
+            System.err.println("Failed to set LaF");
         }
+    }
+    public static void updateTheme() {
+        SwingUtilities.updateComponentTreeUI(Window.getInstance());
     }
     public static void saveTheme(Theme theme) {
         try {

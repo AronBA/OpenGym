@@ -30,7 +30,7 @@ public class Json {
     public static List<ModelExercise> readWorkoutFromJson(File file){
 
         try {
-            return objectMapper.readValue(file, new TypeReference<List<ModelExercise>>() {});
+            return objectMapper.readValue(file, new TypeReference<>(){});
         } catch (IOException ignored) {
             return new ArrayList<>();
         }

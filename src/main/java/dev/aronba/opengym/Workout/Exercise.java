@@ -13,18 +13,22 @@ import java.util.List;
  */
 
 public class Exercise extends JPanel{
-
-
     private final String exerciseName;
-    private final JList<String> jSets;
-    private final DefaultListModel<String> sets;
+    private DefaultListModel<String> sets;
+    private JList<String> jSets;
     Exercise(Workout workout){
-
+        sets = new DefaultListModel<>();
+        jSets = new JList<>(sets);
         exerciseName = JOptionPane.showInputDialog("ExerciseName");
-        JButton removeExercise = new JButton("X");
+
+        Image img = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/trash.png"))
+                .getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        ImageIcon trashIcon = new ImageIcon(img);
+        JButton removeExercise = new JButton(trashIcon);
+        removeExercise.setPreferredSize(new Dimension(30, 30));
+
         removeExercise.addActionListener(actionEvent -> workout.removeExercise(this));
         JPanel toppanel = new JPanel();
-
 
         setLayout(new BorderLayout());
 
@@ -37,9 +41,10 @@ public class Exercise extends JPanel{
         JButton newSet = new JButton("+");
         newSet.addActionListener(actionEvent ->addSet());
 
+        add(jSets,BorderLayout.CENTER);
+
         JButton removeset = new JButton("-");
         removeset.addActionListener(actionEvent ->removeSet());
-
 
         JPanel sidepanel = new JPanel();
         sidepanel.setLayout(new GridLayout(2,1));
@@ -48,10 +53,6 @@ public class Exercise extends JPanel{
 
         sidepanel.add(newSet);
         sidepanel.add(removeset);
-        sets = new DefaultListModel<>();
-        jSets = new JList<>(sets);
-        add(jSets,BorderLayout.CENTER);
-
 
         add(new JSeparator(), BorderLayout.SOUTH);
         workout.content.add(this);
@@ -82,7 +83,6 @@ public class Exercise extends JPanel{
             }
             dev.aronba.opengym.Window.refreshWindow();
         }
-
     }
     void addSet(){
         String inputDialog = JOptionPane.showInputDialog("Set");
