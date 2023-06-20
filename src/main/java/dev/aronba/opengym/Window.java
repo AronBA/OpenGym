@@ -25,7 +25,8 @@ public class Window extends JFrame {
     private Window(){
         setLayout(new BorderLayout());
         setBounds(100,100,600,400);
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/logo.jpg")));
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/logo.jpg")));
 
         WorkoutPage workoutPage = new WorkoutPage();
         HistoryPage historyPage = new HistoryPage();

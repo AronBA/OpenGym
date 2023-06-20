@@ -13,12 +13,12 @@ public enum Theme {
     FlatLafDarcula;
     public static FlatLaf getTheme(Theme theme) {
         return switch (theme) {
-            case FlatLafDark -> new FlatDarkLaf();
             case FlatLafLight -> new FlatLightLaf();
             case FlatLafMacLight -> new FlatMacLightLaf();
             case FlatLafMacDark -> new FlatMacDarkLaf();
             case FlatLafIntellij -> new FlatIntelliJLaf();
             case FlatLafDarcula -> new FlatDarculaLaf();
+            default -> new FlatDarkLaf();
         };
     }
 }

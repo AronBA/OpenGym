@@ -11,9 +11,9 @@ import java.util.Properties;
 public class Settings {
     public static File openGymFolder = new File(".opengym");
     public static File workoutFolder = new File(openGymFolder + "/Workouts");
-    public static File configFile = new File(openGymFolder + "/opengym.conf");
-    public static Theme theme;
-    public static Properties properties;
+    private static File configFile = new File(openGymFolder + "/opengym.conf");
+    private static Theme theme;
+    private static Properties properties;
 
     public static void readSettings() {
         properties = new Properties();
@@ -22,6 +22,10 @@ public class Settings {
             properties.load(fis);
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+        if (properties.getProperty("theme") == null) {
+            setTheme(Theme.FlatLafDark);
+            return;
         }
         setTheme(Theme.valueOf(properties.getProperty("theme")));
     }
@@ -39,7 +43,13 @@ public class Settings {
         }
     }
     public static void saveTheme(Theme theme) {
-        properties.put("theme", theme);
+        try {
+            FileOutputStream fos = new FileOutputStream(configFile.toString());
+            properties.setProperty("theme", String.valueOf(theme));
+            properties.store(fos, "Current theme");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
