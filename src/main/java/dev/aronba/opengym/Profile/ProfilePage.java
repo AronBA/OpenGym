@@ -1,5 +1,6 @@
 package dev.aronba.opengym.Profile;
 import dev.aronba.opengym.History.HistoryPage;
+import dev.aronba.opengym.Theme;
 import org.apache.commons.io.FileUtils;
 
 import com.formdev.flatlaf.*;
@@ -17,22 +18,11 @@ import dev.aronba.opengym.Settings;
 
 public class ProfilePage extends JPanel {
     public ProfilePage() {
-        Map<String, FlatLaf> flatLafMap = new HashMap<>();
-        flatLafMap.put(FlatDarculaLaf.NAME, new FlatDarculaLaf());
-        flatLafMap.put(FlatIntelliJLaf.NAME, new FlatIntelliJLaf());
-        flatLafMap.put(FlatMacDarkLaf.NAME, new FlatMacDarkLaf());
-        flatLafMap.put(FlatMacLightLaf.NAME, new FlatMacLightLaf());
-        flatLafMap.put(FlatLightLaf.NAME, new FlatLightLaf());
-        flatLafMap.put(FlatDarkLaf.NAME, new FlatDarkLaf());
-        JComboBox<String> themesComboBox = new JComboBox(flatLafMap.keySet().toArray());
+        JComboBox<String> themesComboBox = new JComboBox(Theme.values());
         themesComboBox.addActionListener(l -> {
-            try {
-                System.out.println();
-                UIManager.setLookAndFeel(flatLafMap.get(themesComboBox.getSelectedItem().toString()));
-                SwingUtilities.updateComponentTreeUI(Window.getInstance());
-            } catch( Exception ex ) {
-                System.err.println( "Failed to switch LaF" );
-            }
+            Theme theme = (Theme) themesComboBox.getSelectedItem();
+            Settings.setTheme(theme);
+            Settings.saveTheme(theme);
         });
         add(themesComboBox);
 

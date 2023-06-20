@@ -1,13 +1,45 @@
 package dev.aronba.opengym;
 
-import java.io.File;
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLaf;
+
+import javax.swing.*;
+import java.io.*;
+import java.util.Properties;
 
 //this class should represent the opengym.conf file
 public class Settings {
-
     public static File openGymFolder = new File(".opengym");
     public static File workoutFolder = new File(openGymFolder + "/Workouts");
+    public static File configFile = new File(openGymFolder + "/opengym.conf");
+    public static Theme theme;
+    public static Properties properties;
 
-    public static String standartTheme = "";
+    public static void readSettings() {
+        properties = new Properties();
+        try {
+            FileInputStream fis = new FileInputStream(configFile.toString());
+            properties.load(fis);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        setTheme(Theme.valueOf(properties.getProperty("theme")));
+    }
+
+    public static Theme getTheme() {
+        return Settings.theme;
+    }
+    public static void setTheme(Theme theme) {
+        Settings.theme = theme;
+        try {
+            UIManager.setLookAndFeel(Theme.getTheme(theme));
+            SwingUtilities.updateComponentTreeUI(Window.getInstance());
+        } catch( Exception ex ) {
+            System.err.println( "Failed to set LaF" );
+        }
+    }
+    public static void saveTheme(Theme theme) {
+        properties.put("theme", theme);
+    }
 
 }
