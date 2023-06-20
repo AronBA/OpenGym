@@ -49,5 +49,4 @@ public class Settings {
             throw new RuntimeException(e);
         }
     }
-
 }
